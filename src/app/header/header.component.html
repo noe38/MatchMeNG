@@ -1,20 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
-    <a class="navbar-brand" routerLink="">MatchMeNG <span class="sr-only">(current)</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLink="informatique">Informatique<span
-                    class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" routerLink="biologie">Biologie</a>
-            <a class="nav-item nav-link" routerLink="diversification">Diversification</a>
-        </div>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top">
+            <a class="navbar-brand" routerLink="">MatchMeNG <span class="sr-only">(current)</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" routerLink="informatique">Informatique<span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" routerLink="biologie">Biologie</a>
+                    <a class="nav-item nav-link" routerLink="diversification">Diversification</a>
+                </div>
+            </div>
+            <form class="form-inline">
+                <a class="nav-item nav-link" routerLink="auth/signup" *ngIf="!isAuth">Créer un compte</a>
+                <a class="nav-item nav-link" routerLink="auth/signin" *ngIf="!isAuth">Connexion</a>
+                <a class="nav-item nav-link" (click)="onSignOut()" *ngIf="isAuth"
+                    style="cursor:pointer">Déconnection</a>
+            </form>
+        </nav>
     </div>
-    <form class="form-inline">
-        <a class="nav-item nav-link" routerLink="auth/signup" *ngIf="!isAuth">Créer un compte</a>
-        <a class="nav-item nav-link" routerLink="auth/signin" *ngIf="!isAuth">Connexion</a>
-        <a class="nav-item nav-link" (click)="onSignOut()" *ngIf="isAuth" style="cursor:pointer">Déconnection</a>
-    </form>
-</nav>
+</body>
