@@ -1,1 +1,19 @@
-<p>divers-list works!</p>
+<body>
+    <h2>Les articles de diversification d'NG</h2>
+    <h6>Ces articles sont stockés sur Firebase et je peux m'identifier pour en écrire de nouveaux</h6>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action container p-3 shadow-lg border rounded"
+            *ngFor="let divers of diverss; let i = index" (click)="onViewDivers(i)">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ divers.title }}</h5>
+                <small>date</small>
+                <button type="button" class="badge badge-danger badge-pill"
+                    (click)="onDeleteDivers(divers)">Effacer</button>
+            </div>
+            <p class="mb-1">{{ divers.author }}</p>
+            <small>moi</small>
+            <img *ngIf="divers.photo" [src]="divers.photo" class="img-fluid rounded mx-auto d-block img-thumbnail" />
+        </a>
+    </div><br>
+    <button class="btn btn-primary" (click)="onNewDivers()">Nouvel article de diversification</button>
+</body>

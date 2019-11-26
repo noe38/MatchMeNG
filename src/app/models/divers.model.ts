@@ -1,7 +1,7 @@
 export class Divers {
     photo: string;
-    text: string;
+    synopsis: string;
 
     constructor(public title: string,
-        public date: string) { }
+        public author: string) { }
 }

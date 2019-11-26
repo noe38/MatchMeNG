@@ -1,14 +1,21 @@
 body
 {
    
-    background-image: url("/assets/img/IMG_4874-modif-clair-ref.jpg");
+    /* background-image: url("/assets/img/IMG_4874-modif-clair-ref.jpg"); */
     
    
-    /* margin:0;
+    margin:0;
     padding:0;
      background: url("/assets/img/IMG_4874-modif-clair.jpg") no-repeat center fixed;
-  -webkit-background-size: cover; pour anciens Chrome et Safari
-  background-size: cover; version standardisée
+     
+     
+     /* version standardisée */
+  background-size: cover; 
+  /* pour anciens Chrome et Safari*/
+  -webkit-background-size: cover; 
   -moz-background-size: cover;
-  -o-background-size: cover; */
+  -o-background-size: cover;
+
+  height: 100%;
+  overflow: hidden;
 }

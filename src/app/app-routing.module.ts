@@ -8,6 +8,7 @@ import { DiversFormComponent } from './divers-list/divers-form/divers-form.compo
 import { SingleDiversComponent } from './divers-list/single-divers/single-divers.component';
 import { InformatiqueComponent } from './informatique/informatique.component';
 import { BiologieComponent } from './biologie/biologie.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -16,9 +17,9 @@ const routes: Routes = [
   { path: 'biologie', component: BiologieComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'diversification', component: DiversListComponent },
-  { path: 'diversification/formulaire', component: DiversFormComponent },
-  { path: 'diversification/article/:id', component: SingleDiversComponent },
+  { path: 'diversification', canActivate: [AuthGuardService], component: DiversListComponent },
+  { path: 'diversification/formulaire', canActivate: [AuthGuardService], component: DiversFormComponent },
+  { path: 'diversification/article/:id', canActivate: [AuthGuardService], component: SingleDiversComponent },
   { path: '**', redirectTo: '' }
 ];
 
