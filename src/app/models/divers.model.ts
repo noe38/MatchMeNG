@@ -3,5 +3,5 @@ export class Divers {
     synopsis: string;
 
     constructor(public title: string,
-        public author: string) { }
+        public date: string) { }
 }

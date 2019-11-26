@@ -1,7 +1,7 @@
 <div class="container p-3 shadow-lg border rounded">
     <img style="max-width:400px" *ngIf="divers.photo" [src]="divers.photo">
     <h1>{{ divers.title }}</h1>
-    <h3>{{ divers.author }}</h3>
+    <h3>{{ divers.date }}</h3>
     <p>{{ divers.synopsis }}</p>
     <button class="btn btn-default" (click)="onBack()">Retour</button>
 </div>

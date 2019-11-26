@@ -6,12 +6,11 @@
             *ngFor="let divers of diverss; let i = index" (click)="onViewDivers(i)">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ divers.title }}</h5>
-                <small>date</small>
+                <small>{{ divers.date }}</small>
                 <button type="button" class="badge badge-danger badge-pill"
                     (click)="onDeleteDivers(divers)">Effacer</button>
             </div>
-            <p class="mb-1">{{ divers.author }}</p>
-            <small>moi</small>
+            <p>{{ divers.synopsis }}</p>
             <img *ngIf="divers.photo" [src]="divers.photo" class="img-fluid rounded mx-auto d-block img-thumbnail" />
         </a>
     </div><br>
