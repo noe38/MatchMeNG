@@ -7,7 +7,8 @@
       <!-- Call to action -->
       <ul class="list-unstyled list-inline text-center py-2">
         <li class="list-inline-item">
-          <a class="badge badge-pill badge-secondary" href="#" role="button">Administrateur</a>
+          <a class="badge badge-pill badge-secondary" routerLink="auth/signin" *ngIf="!isAuth" role="button">Administrateur</a>
+          <a class="badge badge-pill badge-success" (click)="onSignOut()" *ngIf="isAuth" role="button">Administrateur connecté</a>
         </li>
       </ul>
       <!-- Call to action -->

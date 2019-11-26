@@ -17,9 +17,9 @@ const routes: Routes = [
   { path: 'biologie', component: BiologieComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'diversification', canActivate: [AuthGuardService], component: DiversListComponent },
+  { path: 'diversification', component: DiversListComponent },
   { path: 'diversification/formulaire', canActivate: [AuthGuardService], component: DiversFormComponent },
-  { path: 'diversification/article/:id', canActivate: [AuthGuardService], component: SingleDiversComponent },
+  { path: 'diversification/article/:id', component: SingleDiversComponent },
   { path: '**', redirectTo: '' }
 ];
 

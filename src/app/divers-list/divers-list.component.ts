@@ -3,6 +3,8 @@ import { Divers } from '../models/divers.model';
 import { Subscription } from 'rxjs';
 import { DiversService } from '../services/divers.service';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-divers-list',
@@ -13,8 +15,10 @@ export class DiversListComponent implements OnInit, OnDestroy {
 
   diverss: Divers[];
   diverssSubscription: Subscription;
+  isAuth: boolean;
 
-  constructor(private diversService: DiversService, private router: Router) { }
+  
+  constructor(private diversService: DiversService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.diverssSubscription = this.diversService.diverssSubject.subscribe(
@@ -24,6 +28,15 @@ export class DiversListComponent implements OnInit, OnDestroy {
     );
     this.diversService.getDiverss();
     this.diversService.emitDiverss();
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+        } else {
+          this.isAuth = false;
+        }
+      }
+    )
   }
 
   onNewDivers() {

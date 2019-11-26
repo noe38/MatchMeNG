@@ -7,12 +7,12 @@
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ divers.title }}</h5>
                 <small>{{ divers.date }}</small>
-                <button type="button" class="badge badge-danger badge-pill"
+                <button type="button" class="badge badge-danger badge-pill" *ngIf="isAuth"
                     (click)="onDeleteDivers(divers)">Effacer</button>
             </div>
             <p>{{ divers.synopsis }}</p>
             <img *ngIf="divers.photo" [src]="divers.photo" class="img-fluid rounded mx-auto d-block img-thumbnail" />
         </a>
     </div><br>
-    <button class="btn btn-primary" (click)="onNewDivers()">Nouvel article de diversification</button>
+    <button class="btn btn-primary" *ngIf="isAuth" (click)="onNewDivers()">Nouvel article de diversification</button>
 </body>
