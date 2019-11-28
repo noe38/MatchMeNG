@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-un',
@@ -7,9 +9,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionUnComponent implements OnInit {
 
-  constructor() { }
+  questionsForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
+  initForm(){
+    this.questionsForm = this.formBuilder.group({
+
+    })
+  }
+
+  onReponsesInformatique(){
+    this.router.navigate(['/informatique', 'question2']);
+  }
 }
+
+
+
+
+
+ /*  constructor(private formBuilder: FormBuilder,
+    private diversService: DiversService,
+    private router: Router) { }
+
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.diversForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      date: ['', Validators.required],
+      synopsis:''
+    });
+  }
+
+  onSaveDivers() {
+    const title = this.diversForm.get('title').value;
+    const date = this.diversForm.get('date').value;
+    const synopsis = this.diversForm.get('synopsis').value;
+    const newDivers = new Divers(title, date);
+    newDivers.synopsis = synopsis;
+    if (this.fileUrl && this.fileUrl !== '') {
+      newDivers.photo = this.fileUrl;
+    }
+    this.diversService.createNewDivers(newDivers);
+    this.router.navigate(['/diversification']);
+  } */

@@ -1,1 +1,23 @@
-<p>question-deux works!</p>
+<body>
+        <h4>Questionnaire</h4>
+        <div class="container p-3 shadow-lg border rounded">
+            <form [formGroup]="questionsForm" (ngSubmit)="onReponsesInformatique()">
+                <div class="form-group">
+                    <label for="title">
+                        <h5>Question 2:</h5>
+                        <h6>Engageriez-vous une personne Junior et sans expérience en développement informatique ?</h6>
+                    </label>
+                    <div class="custom-control custom-radio">
+                            <input type="radio" id="Q2-R1" formControlName="Question2" class="custom-control-input">
+                            <label class="custom-control-label" for="Q2-R1">Oui</label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                            <input type="radio" id="Q2-R2" formControlName="Question2" class="custom-control-input">
+                            <label class="custom-control-label" for="Q2-R2">Non</label>
+                          </div>
+                </div>
+                <button class="btn btn-success" [disabled]="questionsForm.invalid" type="submit">Question suivante</button>
+            </form>
+    
+        </div>
+    </body>
