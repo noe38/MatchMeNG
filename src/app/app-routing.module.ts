@@ -9,11 +9,13 @@ import { SingleDiversComponent } from './divers-list/single-divers/single-divers
 import { InformatiqueComponent } from './informatique/informatique.component';
 import { BiologieComponent } from './biologie/biologie.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { QuestionUnComponent } from './informatique/question-un/question-un.component';
 
 
 const routes: Routes = [
   { path: '', component: AccueilComponent },
   { path: 'informatique', component: InformatiqueComponent },
+  { path: 'informatique/question1', component: QuestionUnComponent },
   { path: 'biologie', component: BiologieComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },

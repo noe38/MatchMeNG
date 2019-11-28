@@ -19,6 +19,10 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { DiversService } from './services/divers.service';
 import { AsideComponent } from './aside/aside.component';
+import { QuestionUnComponent } from './informatique/question-un/question-un.component';
+import { QuestionDeuxComponent } from './informatique/question-deux/question-deux.component';
+import { QuestionTroisComponent } from './informatique/question-trois/question-trois.component';
+import { GrattageComponent } from './informatique/grattage/grattage.component';
 
 
 @NgModule({
@@ -35,6 +39,10 @@ import { AsideComponent } from './aside/aside.component';
     SingleDiversComponent,
     DiversFormComponent,
     AsideComponent,
+    QuestionUnComponent,
+    QuestionDeuxComponent,
+    QuestionTroisComponent,
+    GrattageComponent,
   ],
   imports: [
     BrowserModule,
