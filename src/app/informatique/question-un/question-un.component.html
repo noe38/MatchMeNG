@@ -1,18 +1,18 @@
 <body>
     <h4>Questionnaire</h4>
     <div class="container p-3 shadow-lg border rounded">
-        <form [formGroup]="questionsForm" (ngSubmit)="onReponsesInformatique()">
+        <form [formGroup]="questionUnForm" (ngSubmit)="onSaveReponseUn()">
             <div class="form-group">
-                <label for="title">
+                <label for="question1">
                     <h5>Question 1:</h5>
                     <h6>Avez-vous besoin de développer une application avec Java et/ou Angular ?</h6>
                 </label>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="Q1-R1" formControlName="Question1" class="custom-control-input">
+                    <input type="radio" id="Q1-R1" formControlName="question1" class="custom-control-input">
                     <label class="custom-control-label" for="Q1-R1">Oui</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="Q1-R2" formControlName="Question1" class="custom-control-input">
+                    <input type="radio" id="Q1-R2" formControlName="question1" class="custom-control-input">
                     <label class="custom-control-label" for="Q1-R2">Non</label>
                 </div>
             </div>

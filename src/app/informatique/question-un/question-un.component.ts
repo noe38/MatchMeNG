@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class QuestionUnComponent implements OnInit {
 
-  questionsForm: FormGroup;
+  questionUnForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router) { }
 
@@ -18,13 +18,13 @@ export class QuestionUnComponent implements OnInit {
   }
 
   initForm() {
-    this.questionsForm = this.formBuilder.group({
-      
-    })
+    this.questionUnForm = this.formBuilder.group({
+      question1: ['', Validators.required],
+    });
   }
 
-  onReponsesInformatique() {
-    console.log('réponse de la question 1 :' + this.questionsForm.value);
+  onSaveReponseUn() {
+    console.log('réponse de la question 1 :' + this.questionUnForm.get('question1').value);
     this.router.navigate(['/informatique', 'question2']);
   }
 }
