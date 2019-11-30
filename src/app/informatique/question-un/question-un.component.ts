@@ -30,9 +30,6 @@ export class QuestionUnComponent implements OnInit {
 }
 
 
-
-
-
 /*  constructor(private formBuilder: FormBuilder,
    private diversService: DiversService,
    private router: Router) { }
