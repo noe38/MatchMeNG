@@ -1,29 +1,28 @@
 <body>
-        <h4>Questionnaire</h4>
-        <div class="container p-3 shadow-lg border rounded">
-            <form [formGroup]="questionsForm" (ngSubmit)="onReponsesInformatique()">
-                <div class="form-group">
-                    <label for="title">
-                        <h5>Question 3:</h5>
-                        <h6>Pensez-vous qu'avoir un doctorat, PhD, c'est :</h6>
-                    </label>
-                    <div class="custom-control custom-radio">
-                            <input type="radio" id="Q3-R1" formControlName="Question3" class="custom-control-input">
-                            <label class="custom-control-label" for="Q3-R1">Inutile, c'est quoi un doctorat?</label>
-                          </div>
-                          <div class="custom-control custom-radio">
-                            <input type="radio" id="Q3-R2" formControlName="Question3" class="custom-control-input">
-                            <label class="custom-control-label" for="Q3-R2">Une expérience formatrice en terme de gestion de projet (apprendre à rebondir)</label>
-                          </div>
-                          <div class="custom-control custom-radio">
-                                <input type="radio" id="Q3-R3" formControlName="Question3" class="custom-control-input">
-                                <label class="custom-control-label" for="Q3-R3">Devoir appeler "Docteur" mon employé ou collaborateur</label>
-                              </div>
-                </div>
-                <button class="btn btn-success" [disabled]="questionsForm.invalid" type="submit">Question suivante</button>
-            </form>
-            <p></p>
-            <img src="assets/img/informatique/PhDComics1.png" alt="BD PhD Comics managing to graduate"
-                class="img-fluid rounded mx-auto d-block img-thumbnail" />
-        </div>
-    </body>
+  <h4>Questionnaire</h4>
+  <div class="container p-3 shadow-lg border rounded">
+    <form [formGroup]="questionTroisForm" (ngSubmit)="onSaveReponseTrois()">
+      <label for="question3">
+        <h5>Question 3:</h5>
+        <h6>Pensez-vous qu'avoir un doctorat, PhD, c'est :</h6>
+      </label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="q3-r1" formControlName="question3" value="q3-r1">
+        <label class="form-check-label" for="q3-r1">Inutile, c'est quoi un doctorat?</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="q3-r2" formControlName="question3" value="q3-r2">
+        <label class="form-check-label" for="q3-r2">Une expérience formatrice en terme de gestion de projet (apprendre
+          à rebondir)</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="q3-r3" formControlName="question3" value="q3-r3">
+        <label class="form-check-label" for="q3-r3">Devoir appeler "Docteur" mon employé ou collaborateur</label>
+      </div>
+      <button class="btn btn-success" [disabled]="questionTroisForm.invalid" type="submit">Soumettre</button>
+    </form>
+    <p></p>
+    <img src="assets/img/informatique/PhDComics1.png" alt="BD PhD Comics managing to graduate"
+      class="img-fluid rounded mx-auto d-block img-thumbnail" />
+  </div>
+</body>

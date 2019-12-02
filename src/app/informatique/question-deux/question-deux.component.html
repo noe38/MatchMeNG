@@ -1,25 +1,24 @@
 <body>
-        <h4>Questionnaire</h4>
-        <div class="container p-3 shadow-lg border rounded">
-            <form [formGroup]="questionsForm" (ngSubmit)="onReponsesInformatique()">
-                <div class="form-group">
-                    <label for="title">
-                        <h5>Question 2:</h5>
-                        <h6>Engageriez-vous une personne Junior et sans expérience en développement informatique ?</h6>
-                    </label>
-                    <div class="custom-control custom-radio">
-                            <input type="radio" id="Q2-R1" formControlName="Question2" class="custom-control-input">
-                            <label class="custom-control-label" for="Q2-R1">Oui</label>
-                          </div>
-                          <div class="custom-control custom-radio">
-                            <input type="radio" id="Q2-R2" formControlName="Question2" class="custom-control-input">
-                            <label class="custom-control-label" for="Q2-R2">Non</label>
-                          </div>
-                </div>
-                <button class="btn btn-success" [disabled]="questionsForm.invalid" type="submit">Question suivante</button>
-            </form>
-            <p></p>
-            <img src="assets/img/informatique/experienceRoue.png" alt="BD personne ne veut de la roue"
-                class="img-fluid rounded mx-auto d-block img-thumbnail" />
-        </div>
-    </body>
+    <h4>Questionnaire</h4>
+    <div class="container p-3 shadow-lg border rounded">
+        <form [formGroup]="questionDeuxForm" (ngSubmit)="onSaveReponseDeux()">
+            <label for="question2">
+                <h5>Question 2:</h5>
+                <h6>Engageriez-vous une personne Junior et sans expérience en développement informatique ?</h6>
+            </label>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="q2-r1" formControlName="question2" value="q2-r1">
+                <label class="form-check-label" for="q2-r1">Oui</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" class="form-check-input" id="q2-r2" formControlName="question2" value="q2-r2">
+                <label class="form-check-label" for="q2-r2">Non</label>
+            </div>
+            <button class="btn btn-success" [disabled]="questionDeuxForm.invalid" type="submit">Question
+                suivante</button>
+        </form>
+        <p></p>
+        <img src="assets/img/informatique/experienceRoue.png" alt="BD personne ne veut de la roue"
+            class="img-fluid rounded mx-auto d-block img-thumbnail" />
+    </div>
+</body>

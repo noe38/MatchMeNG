@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { InformatiqueService } from 'src/app/services/informatique.service';
 
 @Component({
   selector: 'app-question-trois',
@@ -9,21 +10,24 @@ import { Router } from '@angular/router';
 })
 export class QuestionTroisComponent implements OnInit {
 
-  questionsForm: FormGroup;
+  questionTroisForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private infoService: InformatiqueService) { }
 
   ngOnInit() {
     this.initForm();
   }
 
   initForm(){
-    this.questionsForm = this.formBuilder.group({
-
-    })
+    this.questionTroisForm = this.formBuilder.group({
+      question3: ['', Validators.required],
+    });
   }
 
-  onReponsesInformatique(){
+  onSaveReponseTrois(){
+    console.log('réponse de la question 3:' + this.questionTroisForm.get('question3').value);
+    const question3 = this.questionTroisForm.get('question3').value;
+    this.infoService.emitReponseTrois(question3);
     this.router.navigate(['/informatique', 'grattage']);
   }
 
