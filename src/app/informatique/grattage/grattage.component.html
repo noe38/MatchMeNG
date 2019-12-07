@@ -1,9 +1,15 @@
 <body>
-    <h4>Grattez la case pour savoir si vous avez gagné !</h4>
+    <h3>Grattez la case pour savoir si vous avez gagné !</h3>
     <div class="container p-3 shadow-lg border rounded">
-            <canvas #zonegrattage id="zonegrattage" width="450" height="350" class="center">
+        <div class="card text-center bg-transparent">
+            
+            <canvas #zonegrattage id="zonegrattage" width="450" height="350" (click)="activergrattage()">
                 <p>Désolé, votre navigateur ne supporte pas Canvas.</p>
             </canvas>
+            <div class="grat" *ngIf="isRepTrue">Vous avez gagné !</div>
+            <div class="grat" *ngIf="!isRepTrue">Vous avez perdu !</div>
             <img [src]="imgrattage1" width="200" height="200" />
+        </div>
+
     </div>
 </body>

@@ -15,4 +15,21 @@ body{
 canvas{
     border-style: solid;
     margin: auto;
+    position: relative;
 }
+
+.grat{
+    height: 150px;
+    width: 250px;
+    left: 95px;
+    top: 75px;
+    display: inline-block;
+    border: 5px solid #fff;
+    
+    position: absolute;
+    text-align: center;
+    font-size: x-large;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
