@@ -5,15 +5,16 @@
             <div class="grat" *ngIf="isRepTrue">
                 Vous avez gagné !<br>
                 <img src="assets/img/informatique/gagne.png" width="100" height="100" />
-                
+
             </div>
             <div class="grat" *ngIf="!isRepTrue">Vous avez perdu !</div>
-            <canvas #zonegrattage id="zonegrattage" width="450" height="350" (click)="activergrattage($event)"
-                (mousemove)="mamousemove($event)">
+            <canvas #zonegrattage id="zonegrattage" width="450" height="350" (click)="activerGrattage($event)"
+                (mousemove)="maMouseMove($event)">
                 <p>Désolé, votre navigateur ne supporte pas Canvas.</p>
             </canvas>
-            <h3><a class="badge badge-pill badge-danger xx-large" [href]="lienLinkedIn" *ngIf="isDiscovered" role="button" onclick="window.open(this.href); return false;">Bravo ! voici l'accès à mon LinkedIn</a></h3>
+            <h3><a class="badge badge-pill badge-danger xx-large" [href]="lienLinkedIn" *ngIf="isDiscovered"
+                    role="button" onclick="window.open(this.href); return false;">Bravo ! voici l'accès à mon
+                    LinkedIn</a></h3>
         </div>
-
     </div>
 </body>

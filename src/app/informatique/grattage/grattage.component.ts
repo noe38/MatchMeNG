@@ -8,7 +8,6 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 export class GrattageComponent implements OnInit {
   @ViewChild('zonegrattage', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
   private context: CanvasRenderingContext2D;
-  imgrattage1: any = "assets/img/informatique/grattez-ici.png";
   lienLinkedIn: any = "https://www.linkedin.com/in/noemie-graignic/";
   isRepTrue: boolean;
   isActiverGrattage: boolean;
@@ -17,7 +16,12 @@ export class GrattageComponent implements OnInit {
   interval: number;
   isDiscovered: boolean;
   zonegrattage = document.getElementById("zonegrattage");
-
+  k_index: number;
+  img_grat_array: number[];
+  gratte_tout: number;
+  k: number;
+  /* pourcentK: number;
+  pourcentKDeux: number; */
 
   constructor() { }
 
@@ -42,29 +46,55 @@ export class GrattageComponent implements OnInit {
     this.context.fillText("Grattez ici", 100, 190);
 
 
+
   }
 
-  //au clic sur le canevas, le grattage est activé
-  activergrattage($event) {
-    console.log("clic sur le canvas", $event);
+  // au clic sur le canevas, le grattage est activé
+  activerGrattage($event) {
+    //console.log("clic sur le canvas", $event);
     this.isActiverGrattage = true;
     this.startScratchedTime = new Date();
-
+    this.creationTableau();
   }
 
+  creationTableau() {
+    // initialisation du tableau pour le nombre de pixels effacés
+    this.img_grat_array = new Array;
+    for (this.k = 0; this.k < 420 * 320; this.k++) {
+      this.img_grat_array[this.k] = 1;
+      // attention ce console.log prend du temps car affiche les lignes
+      //console.log("tableau ", this.img_grat_array[0], "et", this.img_grat_array[1]);
+      /* this.pourcentK = this.k*100/134400;
+      this.pourcentKDeux = Math.round(this.pourcentK); */
+    }
+    // initialisation pixels grattés
+    this.gratte_tout = 0;
+  }
+
+
   // grattage d'un carré de 30 par 30 sur le canevas quand le grattage est actif
-  mamousemove($event) {
+  maMouseMove($event) {
+
     if (this.isActiverGrattage === true) {
-      console.log("souris bouge sur le canvas", $event);
+      //console.log("souris bouge sur le canvas", $event);
+
       // enlève le dessin du canvas là où on passe la souris
       this.context.clearRect($event.layerX - 15, $event.layerY - 15, 30, 30);
-      // fin après un décompte
+      // comptage des pixels grattés
+      this.k_index = parseInt(($event.layerY + 30) * 420 + ($event.layerX + 30));
+      if (this.img_grat_array[this.k_index]) {
+        this.gratte_tout++;
+        this.img_grat_array[this.k_index] = 0;
+        //console.log("le gratte_tout est de : ", this.gratte_tout);
+      }
+      // décompte pour l'arrêt du jeu
       this.endScratchedTime = new Date();
       this.interval = this.endScratchedTime.getTime() - this.startScratchedTime.getTime();
-      console.log("l'interval est de: ", this.interval);
-      if (this.interval >= 6000) {
+      //console.log("l'interval est de: ", this.interval);
+      // arrêt du jeu
+      if (this.interval >= 6000 && this.gratte_tout >= 250) {
         this.isDiscovered = true;
-        this.isActiverGrattage= false;
+        this.isActiverGrattage = false;
       }
     };
   }
