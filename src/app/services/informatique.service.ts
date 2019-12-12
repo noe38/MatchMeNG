@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Reponse } from '../models/informatique.model';
-import { Subject } from 'rxjs';
+//import { Reponse } from '../models/informatique.model';
+import { Subject, from } from 'rxjs';
+import { sequenceEqual } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,13 @@ export class InformatiqueService {
   reponseUnObs = this.reponseUnSubject.asObservable();
   reponseDeuxObs = this.reponseDeuxSubject.asObservable();
   reponseTroisObs = this.reponseTroisSubject.asObservable();
+  isRepTrue: boolean;
+  unJuste = from("q1-1");
+  deuxJuste = from("q2-r1");
+  troisJuste = from("q3-r2");
+  isRepUnTrue: boolean;
+  isRepDeuxTrue: boolean;
+  isRepTroisTrue: boolean;
 
   constructor() { }
 
@@ -33,6 +41,14 @@ export class InformatiqueService {
 
   emitReponseTrois(reponseTrois: string) {
     this.reponseTroisSubject.next(reponseTrois);
+  }
+
+  getReponsesJustes() {
+    if (this.reponseUnSubject.pipe(sequenceEqual(this.unJuste)) /* && this.reponseDeuxSubject.pipe(sequenceEqual(this.deuxJuste)) && this.reponseTroisSubject.pipe(sequenceEqual(this.troisJuste)) */) {
+      return this.isRepTrue = true;
+    } else {
+      return this.isRepTrue = false;
+    };
   }
 
 }

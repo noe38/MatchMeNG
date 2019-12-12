@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { InformatiqueService } from 'src/app/services/informatique.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-grattage',
@@ -24,6 +25,9 @@ export class GrattageComponent implements OnInit {
   reponseUn: string;
   reponseDeux: string;
   reponseTrois: string;
+  reponseUnSubscription: Subscription;
+  reponseDeuxSubscription: Subscription;
+  reponseTroisSubscription: Subscription;
 
   constructor(private infoService: InformatiqueService) { }
 
@@ -31,7 +35,9 @@ export class GrattageComponent implements OnInit {
     this.context = this.canvas.nativeElement.getContext('2d');
     //this.isRepTrue = true;
 
-    this.reponsesJuste();
+    this.isRepTrue = this.infoService.getReponsesJustes();
+    console.log("isRepTrue dans service: " + this.isRepTrue);
+    //this.reponsesJuste();
 
     this.isDiscovered = false;
 
@@ -54,27 +60,44 @@ export class GrattageComponent implements OnInit {
   }
 
   // Fait vrai si toutes les réponses sont juste
-  reponsesJuste() {
-    this.infoService.reponseUnObs.subscribe((data) => {
+  /* reponsesJuste(){
+
+    this.reponseUnSubscription = this.infoService.reponseUnObs.subscribe((data: string) => {
       this.reponseUn = data;
-      //console.log(this.reponseUn)
-    })
-    this.infoService.reponseDeuxObs.subscribe((data) => {
+      console.log(this.reponseUn);
+    }, (error) => {
+      console.log("Erreur obs rep 1: " + error);
+    }, () => {
+      console.log("Fini obs rep 1!");
+    });
+
+    this.reponseDeuxSubscription = this.infoService.reponseDeuxObs.subscribe((data: string) => {
       this.reponseDeux = data;
-      //console.log(this.reponseDeux)
-    })
-    this.infoService.reponseTroisObs.subscribe((data) => {
+      console.log(this.reponseDeux);
+    }, (error) => {
+      console.log("Erreur obs rep 2: " + error);
+    }, () => {
+      console.log("Fini obs rep 2!");
+    });
+
+    this.reponseTroisSubscription = this.infoService.reponseTroisObs.subscribe((data: string) => {
       this.reponseTrois = data;
-      //console.log(this.reponseTrois)
-    })
-    if (this.reponseUn == "q1-r1" && this.reponseDeux == "q2-r1" && this.reponseTrois == "q3-r2") {
+      console.log(this.reponseTrois);
+    }, (error) => {
+      console.log("Erreur obs rep 3: " + error);
+    }, () => {
+      console.log("Fini obs rep 3!");
+    });
+
+    if (this.reponseUn == 'q1-r1'  && this.reponseDeux == 'q2-r1' && this.reponseTrois == 'q3-r2' ) {
       this.isRepTrue = true;
     } else {
       this.isRepTrue = false
     };
     console.log(this.isRepTrue);
+    return this.isRepTrue;
 
-  }
+  } */
 
   // au clic sur le canevas, le grattage est activé
   activerGrattage($event) {
@@ -122,5 +145,11 @@ export class GrattageComponent implements OnInit {
       }
     };
   }
+
+  /* ngOnDestroy() {
+    this.reponseUnSubscription.unsubscribe();
+    this.reponseDeuxSubscription.unsubscribe();
+    this.reponseTroisSubscription.unsubscribe();
+  } */
 
 }
