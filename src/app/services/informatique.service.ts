@@ -7,11 +7,14 @@ import { Subject } from 'rxjs';
 })
 export class InformatiqueService {
 
-  reponses: Reponse[] = [];
-  reponsesSubject = new Subject<Reponse[]>();
+  //reponses: Reponse[] = [];
+  //reponsesSubject = new Subject<Reponse[]>();
   reponseUnSubject = new Subject<string>();
   reponseDeuxSubject = new Subject<string>();
   reponseTroisSubject = new Subject<string>();
+  reponseUnObs = this.reponseUnSubject.asObservable();
+  reponseDeuxObs = this.reponseDeuxSubject.asObservable();
+  reponseTroisObs = this.reponseTroisSubject.asObservable();
 
   constructor() { }
 

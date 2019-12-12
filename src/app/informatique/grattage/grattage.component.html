@@ -5,9 +5,10 @@
             <div class="grat" *ngIf="isRepTrue">
                 Vous avez gagné !<br>
                 <img src="assets/img/informatique/gagne.png" width="100" height="100" />
-
             </div>
-            <div class="grat" *ngIf="!isRepTrue">Vous avez perdu !</div>
+            <div class="grat" *ngIf="!isRepTrue">Vous avez perdu !<br>
+                <img src="assets/img/informatique/perdu.png" width="100" height="100" />
+            </div>
             <canvas #zonegrattage id="zonegrattage" width="450" height="350" (click)="activerGrattage($event)"
                 (mousemove)="maMouseMove($event)">
                 <p>Désolé, votre navigateur ne supporte pas Canvas.</p>

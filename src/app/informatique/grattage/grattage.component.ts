@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { InformatiqueService } from 'src/app/services/informatique.service';
 
 @Component({
   selector: 'app-grattage',
@@ -20,21 +21,24 @@ export class GrattageComponent implements OnInit {
   img_grat_array: number[];
   gratte_tout: number;
   k: number;
-  /* pourcentK: number;
-  pourcentKDeux: number; */
+  reponseUn: string;
+  reponseDeux: string;
+  reponseTrois: string;
 
-  constructor() { }
+  constructor(private infoService: InformatiqueService) { }
 
   ngOnInit() {
     this.context = this.canvas.nativeElement.getContext('2d');
-    this.isRepTrue = true;
+    //this.isRepTrue = true;
+
+    this.reponsesJuste();
+
     this.isDiscovered = false;
 
     // J'ai essayé de mettre une image à gratter mais elle ne s'affiche pas alors j'ai dessiné
     //this.context.globalCompositeOperation = 'destination-over';
     //const imgrattage = new Image();
     //imgrattage.addEventListener('load', function(){this.context.drawImage(imgrattage, 0, 0, 300, 300)});
-    // imgrattage.src = "assets/img/informatique/grattez-ici.png";
     //imgrattage.src = "assets/img/informatique/grattez-ici.png";
     //this.context.drawImage(imgrattage, 0, 0, 250, 250);
 
@@ -46,6 +50,29 @@ export class GrattageComponent implements OnInit {
     this.context.fillText("Grattez ici", 100, 190);
 
 
+
+  }
+
+  // Fait vrai si toutes les réponses sont juste
+  reponsesJuste() {
+    this.infoService.reponseUnObs.subscribe((data) => {
+      this.reponseUn = data;
+      //console.log(this.reponseUn)
+    })
+    this.infoService.reponseDeuxObs.subscribe((data) => {
+      this.reponseDeux = data;
+      //console.log(this.reponseDeux)
+    })
+    this.infoService.reponseTroisObs.subscribe((data) => {
+      this.reponseTrois = data;
+      //console.log(this.reponseTrois)
+    })
+    if (this.reponseUn == "q1-r1" && this.reponseDeux == "q2-r1" && this.reponseTrois == "q3-r2") {
+      this.isRepTrue = true;
+    } else {
+      this.isRepTrue = false
+    };
+    console.log(this.isRepTrue);
 
   }
 
@@ -64,8 +91,6 @@ export class GrattageComponent implements OnInit {
       this.img_grat_array[this.k] = 1;
       // attention ce console.log prend du temps car affiche les lignes
       //console.log("tableau ", this.img_grat_array[0], "et", this.img_grat_array[1]);
-      /* this.pourcentK = this.k*100/134400;
-      this.pourcentKDeux = Math.round(this.pourcentK); */
     }
     // initialisation pixels grattés
     this.gratte_tout = 0;
@@ -74,10 +99,8 @@ export class GrattageComponent implements OnInit {
 
   // grattage d'un carré de 30 par 30 sur le canevas quand le grattage est actif
   maMouseMove($event) {
-
     if (this.isActiverGrattage === true) {
       //console.log("souris bouge sur le canvas", $event);
-
       // enlève le dessin du canvas là où on passe la souris
       this.context.clearRect($event.layerX - 15, $event.layerY - 15, 30, 30);
       // comptage des pixels grattés
@@ -95,9 +118,9 @@ export class GrattageComponent implements OnInit {
       if (this.interval >= 6000 && this.gratte_tout >= 250) {
         this.isDiscovered = true;
         this.isActiverGrattage = false;
+        this.context.clearRect(0, 0, 420, 320);
       }
     };
   }
-
 
 }
