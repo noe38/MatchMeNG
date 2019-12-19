@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { Reponse } from '../models/informatique.model';
-import { Subject, from } from 'rxjs';
-import { sequenceEqual } from 'rxjs/operators'
+import { Subject, from, iif, Observable, of } from 'rxjs';
+import { sequenceEqual, switchMap } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -44,11 +44,40 @@ export class InformatiqueService {
   }
 
   getReponsesJustes() {
-    if (this.reponseUnSubject.pipe(sequenceEqual(this.unJuste)) /* && this.reponseDeuxSubject.pipe(sequenceEqual(this.deuxJuste)) && this.reponseTroisSubject.pipe(sequenceEqual(this.troisJuste)) */) {
-      return this.isRepTrue = true;
-    } else {
-      return this.isRepTrue = false;
-    };
-  }
+
+//     this.reponseUnObs.pipe(
+//       switchMap(this.reponseUnObs=> {
+//         if(this.reponseUnSubject.pipe(sequenceEqual(this.unJuste))){
+//       return this.isRepTrue = true
+//     } else { this.isRepTrue = false }
+//   });
+// );
+
+  // this.isRepTrue = iif(
+  //   ()=> this.reponseUnSubject.pipe(sequenceEqual(this.unJuste)),
+  //   of(true),
+  //   of(false)
+  // )
+
+
+
+
+  if (this.reponseUnSubject.pipe(sequenceEqual(this.unJuste)) /* && this.reponseDeuxSubject.pipe(sequenceEqual(this.deuxJuste)) && this.reponseTroisSubject.pipe(sequenceEqual(this.troisJuste)) */) {
+    return this.isRepTrue = true;
+  } else {
+    return this.isRepTrue = false;
+  };
+
+}
+
+getIsRepUn(){
+  return this.reponseUnObs.pipe(sequenceEqual(this.unJuste))
+}
+getIsRepDeux(){
+  return this.reponseDeuxSubject.pipe(sequenceEqual(this.deuxJuste))
+}
+getIsRepTrois(){
+  return this.reponseTroisSubject.pipe(sequenceEqual(this.troisJuste))
+}
 
 }

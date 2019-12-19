@@ -13,7 +13,7 @@
                 (mousemove)="maMouseMove($event)">
                 <p>Désolé, votre navigateur ne supporte pas Canvas.</p>
             </canvas>
-            <h3><a class="badge badge-pill badge-danger xx-large" [href]="lienLinkedIn" *ngIf="isDiscovered"
+            <h3><a class="badge badge-pill badge-danger xx-large" [href]="lienLinkedIn" *ngIf="isDiscovered && isRepTrue"
                     role="button" onclick="window.open(this.href); return false;">Bravo ! voici l'accès à mon
                     LinkedIn</a></h3>
         </div>

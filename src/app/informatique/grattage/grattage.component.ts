@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { InformatiqueService } from 'src/app/services/informatique.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-grattage',
@@ -28,16 +28,21 @@ export class GrattageComponent implements OnInit {
   reponseUnSubscription: Subscription;
   reponseDeuxSubscription: Subscription;
   reponseTroisSubscription: Subscription;
+  isRepUnTrue: boolean;
 
   constructor(private infoService: InformatiqueService) { }
 
   ngOnInit() {
     this.context = this.canvas.nativeElement.getContext('2d');
-    //this.isRepTrue = true;
+    this.isRepTrue = true;
 
-    this.isRepTrue = this.infoService.getReponsesJustes();
-    console.log("isRepTrue dans service: " + this.isRepTrue);
+    // this.isRepTrue = this.infoService.getReponsesJustes();
+    // console.log("isRepTrue dans service: " + this.isRepTrue);
     //this.reponsesJuste();
+
+    //this.infoService.getIsRepUn().subscribe(value => this.isRepUnTrue = value);
+
+    
 
     this.isDiscovered = false;
 
